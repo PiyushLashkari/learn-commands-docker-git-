@@ -28,6 +28,9 @@ docker build -t cda-web-app-react:v17 .
 # Run a docker image (run command implicitly does docker pull if image does not exist)
 docker run hello-world
 
+# Run a ubuntu and use it to expirement commands
+docker run -it ubuntu
+
 # To access this docker image we should run it with some flags
 # 1. -p : it maps the container port to the machine port for exposing this to outside world <external port>:<internal port>
 # 2. --name : to give this a name
@@ -73,8 +76,18 @@ docker push containers.cisco.com/plashkar/<repository name>
 # Run Kubernetes
 kubectl run hello-event-proxy-api --image containers.cisco.com/plashkar/event-proxy-api-dockerize:latest --port 1201
 
-# Steps for creating docker image running container and the pushing it to containers.cisco.commit
+# Steps for creating docker image running container and the pushing it to containers.cisco.com
 docker build -t cda-web-app-angular:v1 .
 docker images
 docker run -p 1127:1127 --name cda-web-app-angular-v1 -d <image id>
 docker ps
+
+# Create a docker image from a file
+# custom-agent-ubuntu:v2 is the image name with tag
+# custom-agent.debug is the file name with all the commands
+docker build -t <custom-agent-ubuntu:v2> -f <custom-agent.debug> .
+
+# Steps to push docker image to docker hub
+docker login
+docker tag <image name with tag> <docker user id>/<image name>
+docker push <docker user id>/<image name>
