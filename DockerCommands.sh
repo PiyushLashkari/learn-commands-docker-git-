@@ -65,7 +65,7 @@ docker exec -it <container id> /bin/bash
 docker rmi web
 
 # Pushing an image to containers.cisco.com
-docker login -u="plashkar" -p="8WvuDjb3iZBbVmbTsfCe4EoWNZzRZK2XLAQqXb9imAy1UvnmOZlk8NlXKBa37rDe" containers.cisco.com
+docker login -u="<username>" -p="<password>" containers.cisco.com
 docker run -p <external port>:<internal port> -d <image name>
 docker commit <containerID> containers.cisco.com/plashkar/<repository name>
 docker push containers.cisco.com/plashkar/<repository name>
